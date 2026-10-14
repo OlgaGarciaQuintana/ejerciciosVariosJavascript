@@ -1,6 +1,6 @@
 // APARTADO 5: Buscar una cadena sin distinguir mayúsculas
 
-const buscarTexto = (cadena, busqueda) => {
+function buscarTexto(cadena, busqueda) {
     if (cadena.toLowerCase().includes(busqueda.toLowerCase())) {
         console.log("Se ha encontrado '" + busqueda + "' en '" + cadena + "'.");
     } else {
