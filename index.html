@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios varios JavaScript</title>
+</head>
+
+<body>
+    <h1>Ejercicios varios de JavaScript</h1>
+    <p>Abre la consola del navegador con F12 para ver los resultados.</p>
+
+    <script>
+        // APARTADO 1: Comparar la longitud de dos cadenas
+        console.log("========== APARTADO 1 ==========");
+
+        function compararCadenas(cadena1, cadena2) {
+            if (typeof cadena1 !== "string" || typeof cadena2 !== "string") {
+                console.log("Error: Los dos parámetros deben ser cadenas.");
+            } else if (cadena1.length > cadena2.length) {
+                console.log("La cadena más larga es: " + cadena1);
+            } else if (cadena2.length > cadena1.length) {
+                console.log("La cadena más larga es: " + cadena2);
+            } else {
+                console.log("Las dos cadenas tienen la misma longitud.");
+            }
+        }
+
+        compararCadenas("Hola", "Buenos días");
+        compararCadenas("JavaScript", "Java");
+        compararCadenas("Hola", 123);
+
+        // APARTADO 2: Multiplicar por dos en cada repetición
+        console.log("========== APARTADO 2 ==========");
+
+        function duplicarNumero(veces, numero) {
+            for (let i = 0; i < veces; i++) {
+                console.log(numero);
+                numero = numero * 2;
+            }
+        }
+
+        duplicarNumero(4, 6);
+        duplicarNumero(3, 5);
+        duplicarNumero(2, 10);
+
+        // APARTADO 3: Contar cuántas veces aparece un carácter
+        console.log("========== APARTADO 3 ==========");
+
+        function contarCaracter(cadena, caracter) {
+            cadena = String(cadena);
+            caracter = String(caracter);
+
+            if (caracter.length !== 1) {
+                console.log("Error: El segundo parámetro debe tener un solo carácter.");
+                return;
+            }
+
+            let contador = 0;
+            for (let i = 0; i < cadena.length; i++) {
+                if (cadena[i] === caracter) {
+                    contador++;
+                }
+            }
+            console.log("El carácter '" + caracter + "' aparece " + contador + " veces en '" + cadena + "'.");
+        }
+
+        contarCaracter("carcasa", "a");
+        contarCaracter("banana", "n");
+        contarCaracter(112121, 1);
+        contarCaracter("hola", "la");
+
+        // APARTADO 4: Precio final con impuestos
+        console.log("========== APARTADO 4 ==========");
+
+        function calcularPrecio(nombre = "Producto genérico", precio = 100, impuesto = 21) {
+            nombre = String(nombre);
+            precio = Number(precio);
+            impuesto = Number(impuesto);
+
+            if (Number.isNaN(precio) || Number.isNaN(impuesto)) {
+                console.log("Error: El precio y el impuesto deben ser números válidos.");
+            } else {
+                let precioFinal = precio + precio * impuesto / 100;
+                console.log(nombre + ": " + precioFinal.toFixed(2) + " €");
+            }
+        }
+
+        calcularPrecio();
+        calcularPrecio("Libro", 20, 10);
+        calcularPrecio("Mochila", 35);
+        calcularPrecio("Ratón", "incorrecto", 21);
+        calcularPrecio("Teclado", 40, "incorrecto");
+
+        // APARTADO 5: Buscar una cadena dentro de otra (función flecha)
+        console.log("========== APARTADO 5 ==========");
+
+        const buscarTexto = (cadena, busqueda) => {
+            cadena = cadena.toLowerCase();
+            busqueda = busqueda.toLowerCase();
+
+            if (cadena.includes(busqueda)) {
+                console.log("Se ha encontrado '" + busqueda + "' en '" + cadena + "'.");
+            } else {
+                console.log("No se ha encontrado '" + busqueda + "' en '" + cadena + "'.");
+            }
+        };
+
+        buscarTexto("Santiago de Compostela", "COMPO");
+        buscarTexto("JavaScript es divertido", "SCRIPT");
+        buscarTexto("Buenos días", "tardes");
+
+        // APARTADO 6: Modificar un array
+        console.log("========== APARTADO 6 ==========");
+
+        let frutas = ["manzana", "pera", "uva", "plátano"];
+        console.log("Array inicial:", [...frutas]);
+
+        frutas = ["fresa", "kiwi"].concat(frutas, ["naranja", "melón"]);
+        console.log("Con dos elementos al principio y dos al final:", [...frutas]);
+
+        // Eliminar posiciones 3, 4 y 5 (contando la primera como posición 1)
+        frutas.splice(2, 3);
+        console.log("Después de eliminar las posiciones 3 a 5:", [...frutas]);
+
+        frutas.splice(frutas.length - 1, 0, "cereza", "sandía");
+        console.log("Con dos elementos entre el penúltimo y el último:", [...frutas]);
+
+        console.log(frutas.join(" ==> "));
+
+        // APARTADO 7: Calcular la media con rest y reduce
+        console.log("========== APARTADO 7 ==========");
+
+        function printMedia(nombre, ...notas) {
+            if (notas.length === 0) {
+                console.log(nombre + " no tiene notas.");
+                return;
+            }
+            let suma = notas.reduce((total, nota) => total + nota, 0);
+            let media = suma / notas.length;
+            console.log("La media de " + nombre + " es " + media.toFixed(2));
+        }
+
+        printMedia("Pepe", 4.25, 6, 8.5, 9);
+        printMedia("Ana", 7, 8, 9);
+        printMedia("Luis", 5, 6);
+
+        // APARTADO 8: Ordenar cadenas de mayor a menor longitud
+        console.log("========== APARTADO 8 ==========");
+
+        let palabras = ["sol", "ordenador", "casa", "javascript", "luz"];
+        console.log("Array original:", [...palabras]);
+        let palabrasOrdenadas = [...palabras].sort((a, b) => b.length - a.length);
+        console.log("Ordenadas de mayor a menor longitud:", palabrasOrdenadas);
+
+        // APARTADO 9: Sumar las cifras de cada número sin bucles
+        console.log("========== APARTADO 9 ==========");
+
+        let numeros = [123, 34, 52, 456, 91];
+        let sumaCifras = numeros.map(numero =>
+            Array.from(String(numero)).reduce((suma, cifra) => suma + Number(cifra), 0)
+        );
+        console.log("Array original:", numeros);
+        console.log("Suma de las cifras:", sumaCifras);
+
+        // APARTADO 10: Área de un triángulo con dos lados y un ángulo
+        console.log("========== APARTADO 10 ==========");
+
+        function areaTriangulo(lado1, lado2, angulo) {
+            let radianes = angulo * Math.PI / 180;
+            let area = 0.5 * lado1 * lado2 * Math.sin(radianes);
+            console.log("El área del triángulo es " + area.toFixed(2));
+        }
+
+        areaTriangulo(5, 8, 30);
+        areaTriangulo(10, 6, 90);
+        areaTriangulo(7, 9, 45);
+
+        // APARTADO 11: Formatear fechas usando Date
+        console.log("========== APARTADO 11 ==========");
+
+        function mostrarFecha(fechaTexto) {
+            let partes = fechaTexto.split("-");
+            let fecha = new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
+            let dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+            console.log(dias[fecha.getDay()] + ", " + fecha.getDate() + " de " + meses[fecha.getMonth()] + " de " + fecha.getFullYear());
+        }
+
+        mostrarFecha("2019-02-28");
+        mostrarFecha("2026-10-14");
+        mostrarFecha("2025-12-25");
+
+        // APARTADO 12: Formatear fechas usando Intl
+        console.log("========== APARTADO 12 ==========");
+
+
+        function formatearFecha(fecha) {
+            let fechaNueva = new Date(fecha + "T00:00:00");
+
+            let resultado = new Intl.DateTimeFormat("es-ES", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }).format(fechaNueva);
+
+            console.log(resultado);
+
+        }
+
+        formatearFecha("2019-02-28");
+        formatearFecha("2026-10-14");
+        formatearFecha("2025-12-25");
+
+    </script>
+</body>
+
+</html>
