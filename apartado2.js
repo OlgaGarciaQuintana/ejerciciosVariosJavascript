@@ -7,9 +7,6 @@ function duplicarVeces(veces, numero) {
     }
 }
 
-duplicarVeces(4, 6);
-duplicarVeces(3, 5);
-
 //arrow function
 const duplicarVecesArrow = (veces, numero) => {
     for (let i = 0; i < veces; i++) {
@@ -17,3 +14,6 @@ const duplicarVecesArrow = (veces, numero) => {
         numero = numero * 2;
     }
 }
+
+duplicarVeces(4, 6);
+duplicarVeces(3, 5);
