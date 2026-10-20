@@ -8,3 +8,13 @@ function areaTriangulo(lado1, lado2, angulo) {
 
 areaTriangulo(5, 8, 30);
 areaTriangulo(10, 6, 90);
+
+//arrow function
+const areaTrianguloArrow = (lado1, lado2, angulo) => {
+    let radianes = angulo * Math.PI / 180;
+    let area = (1 / 2) * lado1 * lado2 * Math.sin(radianes);
+    console.log("El área del triángulo es " + area.toFixed(2));
+}
+
+areaTrianguloArrow(5, 8, 30);
+areaTrianguloArrow(10, 6, 90);

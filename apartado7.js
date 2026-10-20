@@ -12,3 +12,17 @@ function printMedia(nombre, ...notas) {
 
 printMedia("Pepe", 4.25, 6, 8.5, 9);
 printMedia("Ana", 7, 8, 9);
+
+//arrow function
+const printMediaArrow = (nombre, ...notas) => {
+    if (notas.length === 0) {
+        console.log(nombre + " no tiene notas.");
+        return;
+    }
+    let suma = notas.reduce((total, nota) => total + nota, 0);
+    let media = suma / notas.length;
+    console.log("La media de " + nombre + " es " + media.toFixed(2));
+}
+
+printMediaArrow("Pepe", 4.25, 6, 8.5, 9);
+printMediaArrow("Ana", 7, 8, 9);
